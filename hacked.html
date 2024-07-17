@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts Hacked Counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-FsE6/oV/HFvOZxGRd2u5E2vU37KcBBrYs8QdbpS0LBi8E91PAXFzl5mdDgKtGmZx6NkQk6Adt/+U1Df2D6z+Cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2b2b2b;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        #counter {
+            font-size: 2rem;
+            background-color: transparent;
+            color: #fff;
+            padding: 0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        #counter i {
+            margin-right: 10px;
+        }
+        #backButton {
+            background-color: #5865f2;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            width: 200px; /* Adjust the width as needed */
+        }
+        #backButton:hover {
+            background-color: #3b49bd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Hacked</h1>
+        <div id="counter"><i class="fas fa-user-secret"></i><span id="count">0</span></div>
+        <button id="backButton" onclick="window.location.href = 'index.html';">Back</button>
+    </div>
+
+    <script>
+        function saveCountToLocalStorage(count) {
+            try {
+                localStorage.setItem('accountsHackedCount', count);
+            } catch (e) {
+                console.error('Error saving count to localStorage:', e);
+            }
+        }
+
+        function loadCountFromLocalStorage() {
+            const savedCount = localStorage.getItem('accountsHackedCount');
+            return savedCount ? parseInt(savedCount) : 0;
+        }
+
+        let count = loadCountFromLocalStorage();
+        const counterElement = document.getElementById('count');
+        counterElement.textContent = count;
+
+        function incrementCounter() {
+            // Array of random increment values
+            const increments = [1, 12, 6, 29, 13];
+            const randomIndex = Math.floor(Math.random() * increments.length);
+            const increment = increments[randomIndex];
+            
+            count += increment;
+            counterElement.textContent = count;
+            saveCountToLocalStorage(count);
+        }
+
+        setInterval(incrementCounter, 100);
+    </script>
+</body>
+</html>
